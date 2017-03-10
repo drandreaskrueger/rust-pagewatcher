@@ -1,0 +1,9 @@
+[package]
+name = "pagewatcher"
+version = "0.1.1"
+authors = ["akrueger"]
+
+[dependencies]
+curl = "0.2.11"
+# pancurses = "0.7.0"
+webbrowser = { git = "https://github.com/amodm/webbrowser-rs" }
