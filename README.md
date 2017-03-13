@@ -34,6 +34,11 @@ N.B.: `webbrowser::open` will only work when the protocol is given (`http://`)
 ### TODO
 This is my first `rust` program ever. So it might not be good yet. But it works.  
 
+Todo:
+
+* catch (and ignore) timeout when server doesn't answer.
+* So instead of panic, just continue. Can perhaps be done with `map_err`, see https://doc.rust-lang.org/std/result/enum.Result.html#examples-6
+
 Ideas:
 
 * beep when something has happened

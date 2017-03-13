@@ -21,11 +21,13 @@ fn get_hash_of_page_at_url(url: &str) -> u64 {
 	// thanks to
 	// https://github.com/hjr3/rust-get-data-from-url/blob/master/src/main.rs
 	
-	let resp = http::handle()
-	     .get(url)
-	     .exec()
-	     .unwrap_or_else(|e| {
+	let respexec = http::handle()
+	.get(url)
+	.exec();
+	     
+	let resp = respexec.unwrap_or_else(|e| {
 	         panic!("Failed to get {}; error is {}", url, e);
+	         // Want: Fail silently, just ignore. See TODO in README.md
 	     });
 	
     if resp.get_code() != 200 {
@@ -35,6 +37,7 @@ fn get_hash_of_page_at_url(url: &str) -> u64 {
 
     let body = std::str::from_utf8(resp.get_body()).unwrap_or_else(|e| {
         panic!("Failed to parse response from {}; error is {}", url, e);
+        // Want: Fail silently, just ignore. See TODO in README.md
     });
     
     let mut s = std::collections::hash_map::DefaultHasher::new();
